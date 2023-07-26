@@ -6,7 +6,7 @@ import { BsCurrencyRupee } from 'react-icons/bs'
 
 const TopBar = () => {
     return (
-        <div className='hidden lg:flex items-center justify-between text-white h-20 w-full px-8'>
+        <div className='h-20 w-full hidden lg:flex items-center justify-between text-white px-8'>
             <p className='text-white'>Logo</p>
 
             <div className='flex items-center'>
@@ -31,6 +31,7 @@ const TopBar = () => {
                     </span>
                 </button>
             </div>
+
         </div>
     )
 }

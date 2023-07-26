@@ -9,6 +9,7 @@ import { PiSignIn } from 'react-icons/pi'
 import { motion } from 'framer-motion'
 
 const LargeScreen = () => {
+    const navigate = useNavigate();
 
     const handleActive = (e) => {
         const navUlChild = document.getElementById("largeNavLi").querySelectorAll("*");
@@ -59,44 +60,46 @@ const LargeScreen = () => {
     };
 
     return (
-        <>
-            <nav className='hidden lg:flex flex-col h-full w-full justify-between text-sm'>
-
-                <ul className='flex flex-col space-y-8 relative h-full w-full' id='largeNavLi'>
-                    <motion.div
-                        initial={top}
-                        animate={{
-                            top: top,
-                        }}
-                        transition={springConfig}
-                        className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left'>
-                    </motion.div>
-                    {
-                        navList.map((list, ind) => {
-                            return (
-                                <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
-                                    <button className={`flex flex-col items-center justify-center space-y-2`}>
+        <nav className='h-full w-24 lg:flex flex-col pb-4 justify-between hidden'>
+            <ul className='flex flex-col h-full w-full space-y-8 relative' id='largeNavLi'>
+                <motion.div
+                    initial={top}
+                    animate={{
+                        top: top,
+                    }}
+                    transition={springConfig}
+                    className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left rounded-full'>
+                </motion.div>
+                {
+                    navList.map((list, ind) => {
+                        return (
+                            <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
+                                <button onClick={() => {
+                                    {
+                                        list.list_name === "Home" &&  navigate('/') ||
+                                        list.list_name === "Play" && navigate('/gamelist') || 
+                                        list.list_name === "Transactions" && navigate('/transaction')
+                                    }
+                                }} className={`flex flex-col items-center justify-center space-y-2`}>
+                                    {
+                                        list.icon
+                                    }
+                                    <p className='text-xs'>
                                         {
-                                            list.icon
+                                            list.list_name
                                         }
-                                        <p className='text-xs'>
-                                            {
-                                                list.list_name
-                                            }
-                                        </p>
-                                    </button>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
-
-                <button className='flex flex-col items-center justify-center'>
-                    <PiSignIn className='text-xl' />
-                    <p className='text-xs'>Sign In</p>
-                </button>
-            </nav>
-        </>
+                                    </p>
+                                </button>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+            <button className='flex flex-col items-center justify-center space-y-1'>
+                <PiSignIn className='text-xs text-gray-400'/>
+                <p className='text-xs'>Sign In</p>
+            </button>
+        </nav>
     )
 }
 
