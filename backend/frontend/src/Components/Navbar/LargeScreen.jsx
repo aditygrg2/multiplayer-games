@@ -9,6 +9,7 @@ import { PiSignIn } from 'react-icons/pi'
 import { motion } from 'framer-motion'
 
 const LargeScreen = () => {
+    const navigate = useNavigate();
 
     const handleActive = (e) => {
         const navUlChild = document.getElementById("largeNavLi").querySelectorAll("*");
@@ -59,8 +60,8 @@ const LargeScreen = () => {
     };
 
     return (
-        <nav className='hidden lg:flex flex-col h-full w-full text-sm'>
-            <ul className='flex flex-col space-y-8 relative h-full w-full' id='largeNavLi'>
+        <nav className='h-full w-full flex flex-col pb-4 justify-between'>
+            <ul className='flex flex-col h-full w-full space-y-8 relative' id='largeNavLi'>
                 <motion.div
                     initial={top}
                     animate={{
@@ -73,7 +74,13 @@ const LargeScreen = () => {
                     navList.map((list, ind) => {
                         return (
                             <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
-                                <button className={`flex flex-col items-center justify-center space-y-2`}>
+                                <button onClick={() => {
+                                    {
+                                        list.list_name === "Home" &&  navigate('/') ||
+                                        list.list_name === "Play" && navigate('/gamelist') || 
+                                        list.list_name === "Transactions" && navigate('/transaction')
+                                    }
+                                }} className={`flex flex-col items-center justify-center space-y-2`}>
                                     {
                                         list.icon
                                     }
@@ -88,6 +95,10 @@ const LargeScreen = () => {
                     })
                 }
             </ul>
+            <button className='flex flex-col items-center justify-center space-y-1'>
+                <PiSignIn className='text-xs text-gray-400'/>
+                <p className='text-xs'>Sign In</p>
+            </button>
         </nav>
     )
 }
