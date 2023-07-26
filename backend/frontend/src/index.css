@@ -13,6 +13,26 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.blur-left{
+  box-shadow: -80px 0 40px rgb(211,250,80), -40px 0 40px rgb(211,250,80), -40px 0 40px rgb(211,250,80);
+}
+
+.conic_effect{
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%, 
+    transparent 0 2deg, #222222 0 36deg
+    );
+}
+
+.light_effect{
+  box-shadow: 0 0 100px rgb(211,250,80), 60px 0 60px rgb(211,250,80), 80px 0 100px rgb(211,250,80);
+}
+
+
+.button-3d{
+  box-shadow: 0 8px 0 rgb(161, 192, 47), 0 8px 20px rgb(125, 135, 93);
+}
+
 * {
   font-family: 'Poppins', sans-serif;
 }

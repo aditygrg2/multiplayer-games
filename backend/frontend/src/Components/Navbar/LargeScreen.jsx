@@ -1,47 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { LiaHomeSolid } from 'react-icons/lia'
+import { AiFillPlayCircle, AiOutlineTransaction } from 'react-icons/ai'
+import { GrTransaction } from 'react-icons/gr'
+import { BiSolidUser } from 'react-icons/bi'
+import { PiSignIn } from 'react-icons/pi'
 
 import { motion } from 'framer-motion'
 
 const LargeScreen = () => {
-    const navigate = useNavigate();
-
-    const [hoverLeft, setHoverLeft] = useState(null);
-    const [width, setWidth] = useState(null);
-
-    const location = useLocation();
-    const homeRef = useRef(null);
-    const blogRef = useRef(null);
-    const publishRef = useRef(null);
-    const profileRef = useRef(null);
-    useEffect(() => {
-        const { pathname } = location;
-
-        if (pathname === '/') {
-            homeRef.current?.click();
-        } else if (pathname === '/blogs') {
-            blogRef.current?.click();
-        } else if (pathname === '/publish') {
-            publishRef.current?.click();
-        } else if (pathname === '/profile') {
-            publishRef.current?.click();
-        }
-
-    }, [location])
-
-
-    const handleMouseOver = (e) => {
-        const navUl = document.getElementById("largeNavLi");
-
-        const netLeft = e.currentTarget.getBoundingClientRect().left - navUl.getBoundingClientRect().left;
-        setHoverLeft(netLeft);
-        setWidth(e.currentTarget.offsetWidth);
-    }
-
-    const handleMouseOut = (e) => {
-        setHoverLeft(null);
-        setWidth(null);
-    }
 
     const handleActive = (e) => {
         const navUlChild = document.getElementById("largeNavLi").querySelectorAll("*");
@@ -55,56 +22,80 @@ const LargeScreen = () => {
         })
     }
 
-    const [page, setPage] = useState(false);
+    const navList = [
+        {
+            icon: <LiaHomeSolid className='text-2xl' />,
+            list_name: 'Home',
+        },
+        {
+            icon: <AiFillPlayCircle className='text-2xl' />,
+            list_name: 'Play',
+        },
+        {
+            icon: <AiOutlineTransaction className='text-2xl' />,
+            list_name: 'Transactions',
+        },
+        {
+            icon: <BiSolidUser className='text-2xl' />,
+            list_name: 'Profile',
+        },
+    ];
+
+    const [top, setTop] = useState(20);
+    const handleMouseOver = (e) => {
+        const navUlChild = document.getElementById("largeNavLi").getBoundingClientRect();
+        const topDiff = e.currentTarget.getBoundingClientRect().top - navUlChild.top;
+        setTop(topDiff - 14);
+    }
+
+    const handleMouseOut = (e) => {
+
+    }
+
+    const springConfig = {
+        type: 'spring',
+        stiffness: 500,
+        damping: 30,
+    };
 
     return (
         <>
-            { true && <nav className='hidden md:flex items-center justify-around h-full text-sm'>
+            <nav className='hidden lg:flex flex-col h-full w-full justify-between text-sm'>
 
-                <ul id="largeNavLi" className='h-10 flex flex-row items-center relative'>
+                <ul className='flex flex-col space-y-8 relative h-full w-full' id='largeNavLi'>
                     <motion.div
+                        initial={top}
                         animate={{
-                            left: hoverLeft ? hoverLeft : "0",
-                            width: width ,
-                            opacity: width ? "1" : "0",
+                            top: top,
                         }}
-                        className={`absolute bg-white/5 h-full rounded-md z-0`}
-                    ></motion.div>
-                    <li ref={homeRef}
-                        onMouseOver={handleMouseOver}
-                        onMouseOut={handleMouseOut}
-                        onClick={handleActive}
-                        className='bg-transparent z-10 active whitespace-normal py-2 px-8 cursor-pointer text-gray-500'
-                    >
-                        <button className='h-full w-full'>
-                            Home
-                        </button>
-                    </li>
-                    <li
-                        ref={blogRef}
-                        onMouseOver={handleMouseOver}
-                        onMouseOut={handleMouseOut}
-                        onClick={handleActive}
-                        className='bg-transparent z-10 whitespace-normal py-2 px-8 cursor-pointer text-gray-500'
-                    >
-                        <button className='h-full w-full'>
-                            Play
-                        </button>
-                    </li>
-                    <li
-                        ref={publishRef}
-                        onMouseOver={handleMouseOver}
-                        onMouseOut={handleMouseOut}
-                        onClick={handleActive}
-                        className='bg-transparent z-10 whitespace-normal py-2 px-8 cursor-pointer text-gray-500'
-                    >
-                        <button className='h-full w-full'>
-                            Create
-                        </button>
-                    </li>
+                        transition={springConfig}
+                        className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left'>
+                    </motion.div>
+                    {
+                        navList.map((list, ind) => {
+                            return (
+                                <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
+                                    <button className={`flex flex-col items-center justify-center space-y-2`}>
+                                        {
+                                            list.icon
+                                        }
+                                        <p className='text-xs'>
+                                            {
+                                                list.list_name
+                                            }
+                                        </p>
+                                    </button>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
 
-            </nav>}
+                <button className='flex flex-col items-center justify-center'>
+                    <PiSignIn className='text-xl' />
+                    <p className='text-xs'>Sign In</p>
+                </button>
+            </nav>
         </>
     )
 }

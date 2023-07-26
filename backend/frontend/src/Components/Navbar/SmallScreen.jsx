@@ -43,7 +43,8 @@ const SmallScreen = () => {
     }, [location])
 
     return (
-        <div className="md:hidden text-white">
+        <div className="lg:hidden text-white flex items-center justify-between h-full w-full px-4">
+            <p>Logo</p>
             {
                 <div onClick={() => { setShowNav(prev => !prev) }} className='flex flex-col space-y-4'>
                     <motion.div animate={{ rotate: showNav ? "45deg" : "0" }} className='h-[2px] w-6 bg-white origin-top-left'></motion.div>
@@ -71,35 +72,7 @@ const SmallScreen = () => {
                                     Home
                                 </Link>
                             </li>
-                            <li
-                                ref={blogRef}
-                                onClick={handleActive}
-                                className='bg-transparent z-10 whitespace-normal py-2 px-8 cursor-pointer text-gray-500'
-                            >
-                                <Link to="/blogs" className='h-full w-full'>
-                                    Blogs
-                                </Link>
-                            </li>
-                            <li
-                                ref={publishRef}
-                                onClick={handleActive}
-                                className='bg-transparent z-10 whitespace-normal py-2 px-8 cursor-pointer text-gray-500'
-                            >
-                                <Link to="/publish" className='h-full w-full'>
-                                    Create
-                                </Link>
-                            </li>
-                            <li
-                                ref={profileRef}
-                                onClick={(e) => {
-                                    handleActive(e);
-                                }}
-                                className='bg-transparent z-10 whitespace-normal py-2 px-8 cursor-pointer text-gray-500'
-                            >
-                                <Link to="/profile" className='h-full w-full'>
-                                    Profile
-                                </Link>
-                            </li></>
+                        </>
                     }
                 </ul>
             </motion.div>
