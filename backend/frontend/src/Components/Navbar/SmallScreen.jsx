@@ -43,7 +43,7 @@ const SmallScreen = () => {
     }, [location])
 
     return (
-        <div className="lg:hidden text-white flex items-center justify-between h-full w-full px-4">
+        <div className="lg:hidden text-white flex items-center justify-between h-20 w-full px-4">
             <p>Logo</p>
             {
                 <div onClick={() => { setShowNav(prev => !prev) }} className='flex flex-col space-y-4'>

@@ -60,7 +60,7 @@ const LargeScreen = () => {
     };
 
     return (
-        <nav className='h-full w-full flex flex-col pb-4 justify-between'>
+        <nav className='h-full w-24 lg:flex flex-col pb-4 justify-between hidden'>
             <ul className='flex flex-col h-full w-full space-y-8 relative' id='largeNavLi'>
                 <motion.div
                     initial={top}
@@ -68,7 +68,7 @@ const LargeScreen = () => {
                         top: top,
                     }}
                     transition={springConfig}
-                    className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left'>
+                    className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left rounded-full'>
                 </motion.div>
                 {
                     navList.map((list, ind) => {

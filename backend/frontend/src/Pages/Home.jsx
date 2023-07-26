@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsFire } from 'react-icons/bs'
 import NavBar from '../Components/Navbar/NavBar'
-import GameCard from './GameCard'
+import GameCard from '../Components/Cards/GameCard'
 
 const Home = () => {
   return (
