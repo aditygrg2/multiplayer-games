@@ -26,7 +26,7 @@ const Game = ({grid}) => {
   return (
     <div id='game' className='h-full w-full overflow-x-hidden overflow-y-scroll'>
 
-      <div className={`w-96 m-auto aspect-square grid 
+      <div className={`w-96 m-auto aspect-square grid
 
       ${
         grid == 3 && 'grid-cols-3'
