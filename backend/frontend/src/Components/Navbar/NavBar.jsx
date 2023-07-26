@@ -8,7 +8,7 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='h-20 lg:h-full lg:w-24 w-full overflow-hidden'>
+        <div className='h-20 lg:h-full lg:w-24 w-full'>
             <LargeScreen />
             <SmallScreen/>
         </div>

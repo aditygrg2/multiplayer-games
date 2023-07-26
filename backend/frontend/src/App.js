@@ -8,13 +8,13 @@ import NavBar from './Components/Navbar/NavBar'
 
 const App = () => {
   return (
-    <div className={`h-full w-full relative overflow-hidden bg-[#121212] text-white font-poppins`}>
+    <div className={`h-screen w-screen relative overflow-hidden bg-[#121212] text-white font-poppins`}>
       <TopBar />
 
       <div className='h-full w-full flex flex-col lg:flex-row'>
         <NavBar />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home/>} />
           <Route path='/game1' element={<WithoutUser />} />
           <Route path='/game1/play' element={<ValidPath />} />
         </Routes>

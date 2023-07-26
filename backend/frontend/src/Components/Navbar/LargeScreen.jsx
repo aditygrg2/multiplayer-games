@@ -59,44 +59,36 @@ const LargeScreen = () => {
     };
 
     return (
-        <>
-            <nav className='hidden lg:flex flex-col h-full w-full justify-between text-sm'>
-
-                <ul className='flex flex-col space-y-8 relative h-full w-full' id='largeNavLi'>
-                    <motion.div
-                        initial={top}
-                        animate={{
-                            top: top,
-                        }}
-                        transition={springConfig}
-                        className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left'>
-                    </motion.div>
-                    {
-                        navList.map((list, ind) => {
-                            return (
-                                <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
-                                    <button className={`flex flex-col items-center justify-center space-y-2`}>
+        <nav className='hidden lg:flex flex-col h-full w-full text-sm'>
+            <ul className='flex flex-col space-y-8 relative h-full w-full' id='largeNavLi'>
+                <motion.div
+                    initial={top}
+                    animate={{
+                        top: top,
+                    }}
+                    transition={springConfig}
+                    className='h-20 w-[4px] bg-[rgb(211,250,80)] absolute right-0 blur-left'>
+                </motion.div>
+                {
+                    navList.map((list, ind) => {
+                        return (
+                            <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
+                                <button className={`flex flex-col items-center justify-center space-y-2`}>
+                                    {
+                                        list.icon
+                                    }
+                                    <p className='text-xs'>
                                         {
-                                            list.icon
+                                            list.list_name
                                         }
-                                        <p className='text-xs'>
-                                            {
-                                                list.list_name
-                                            }
-                                        </p>
-                                    </button>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
-
-                <button className='flex flex-col items-center justify-center'>
-                    <PiSignIn className='text-xl' />
-                    <p className='text-xs'>Sign In</p>
-                </button>
-            </nav>
-        </>
+                                    </p>
+                                </button>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </nav>
     )
 }
 
