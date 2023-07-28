@@ -1,12 +1,26 @@
 {
-  "name": "backend",
+  "name": "multiplayer-games",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aditygrg2/multiplayer-games.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aditygrg2/multiplayer-games/issues"
+  },
+  "homepage": "https://github.com/aditygrg2/multiplayer-games#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "mongoose": "^7.4.1",
+    "socket.io": "^4.7.1"
+  }
 }
