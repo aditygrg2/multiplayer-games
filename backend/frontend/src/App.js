@@ -5,6 +5,8 @@ import ValidPath from './Components/Games/Game1/Game'
 import Home from '../src/Pages/Home'
 import TopBar from './Components/Navbar/TopBar'
 import NavBar from './Components/Navbar/NavBar'
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/game1' element={<WithoutUser />} />
+          <Route path='/signup' element={<Signup/>} />
+          <Route path='/login' element={<Login/>} />
         </Routes>
       </div>
     </div>

@@ -95,7 +95,7 @@ const LargeScreen = () => {
                     })
                 }
             </ul>
-            <button className='flex flex-col items-center justify-center space-y-1'>
+            <button onClick={() => {navigate('/login')}} className='flex flex-col items-center justify-center space-y-1'>
                 <PiSignIn className='text-xs text-gray-400'/>
                 <p className='text-xs'>Sign In</p>
             </button>
