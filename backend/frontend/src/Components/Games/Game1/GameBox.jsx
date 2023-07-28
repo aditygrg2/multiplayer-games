@@ -14,9 +14,9 @@ const WithoutUser = () => {
         setSelectedGridValue(Number(e.target.value));
     }
 
-    const handleFindOpponent = useCallback(() => {
+    const handleFindOpponent = () => {
         setOpponent(prev => !prev);
-    }, []);
+    }
 
     return (
         <div className='h-full w-full px-4 overflow-y-scroll overflow-x-hidden scrollbar-hidden'>
@@ -31,7 +31,7 @@ const WithoutUser = () => {
                         </div>
 
                         <div className='flex flex-col items-center justify-center space-y-4'>
-                            <div className='h-full w-full whitespace-nowrap overflow-x-scroll text-center'>
+                            <div className='h-full w-full whitespace-nowrap overflow-x-scroll text-center scrollbar-hidden'>
                                 <RuleCards index={1}/>
                                 <RuleCards index={2}/>
                                 <RuleCards index={3}/>

@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Squares from './Squares';
+import axios from 'axios'
 
 const Game = ({grid}) => {
   const [gridArray, setGridArray] = useState([[1,1,3],[3,2,2],[1,1,4]]);
@@ -26,7 +27,7 @@ const Game = ({grid}) => {
   return (
     <div id='game' className='h-full w-full overflow-x-hidden overflow-y-scroll'>
 
-      <div className={`w-96 m-auto aspect-square grid 
+      <div className={`w-full md:w-96 m-auto aspect-square grid 
 
       ${
         grid == 3 && 'grid-cols-3'
