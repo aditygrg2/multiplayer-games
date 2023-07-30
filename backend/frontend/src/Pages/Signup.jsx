@@ -10,78 +10,39 @@ const Signup = () => {
 
     const [passVisible, setPassVisible] = useState(false);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     blgctx.setLoading(prev => !prev);
-    //     try {
-    //         const result = await axios.post(`${ServerUrl}/signup`, {
-    //             username: username,
-    //             password: pass,
-    //         }, {
-    //             withCredentials: true,
-    //             credentials: 'include'
-    //         })
-
-    //         if (result.data.status === 200) {
-    //             navigate('/login');
-    //         } else if (result.data.status === 202) {
-    //         }
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    //     blgctx.setLoading(prev => !prev);
-    // }
-
     return (
-        <div className='h-full w-full flex items-center justify-center p-2 lg:pb-0 pb-20'>
-
-            <div className='flex flex-col lg:flex-row lg:h-[60vh] lg:w-[60%] space-y-4 w-full h-full'>
-
-                <div className='flex items-center justify-center h-full w-full'>
-                    <p className='text-3xl text-center'>
-                        Create Your Account with NITJ BLOGGERS
-                    </p>
-                </div>
-
-
-                <div className='flex flex-col lg:items-center lg:justify-center h-full w-full space-y-4 lg:p-2'>
-
-                    <a className='bg-white p-2 text-black rounded-md flex items-center justify-center space-x-2 py-2 text-xl'>
-                        <FcGoogle /><span>Create with Google</span>
-                    </a>
-
-                    <div className='w-full h-10 flex items-center justify-around space-x-4'>
-                        <div className='h-[1px] w-full bg-gray-500'></div>
-                        <div className=''>Or</div>
-                        <div className='h-[1px] w-full bg-gray-500'></div>
-                    </div>
-
-                    <form className='h-full w-full flex flex-col lg:items-center space-y-3'>
-                        <div className='w-full p-2 border-[1px] border-gray-500 rounded-md h-14 flex items-center'>
-                            <input onChange={(e)=>{setUsername(e.target.value)}} value={username} type="text" name="" id="" className='outline-none bg-transparent text-sm h-full w-full' placeholder='Enter Username'/>
-                        </div>
-
-                        <div className='w-full p-2 border-[1px] border-gray-500 rounded-md h-14 flex items-center relative'>
-                            <input ref={passRef} onChange={(e)=>{setPass(e.target.value)}} value={pass} type="password" name="" id="" className='outline-none bg-transparent text-sm h-full w-full' placeholder='Enter Password'/>
-
-                            {
-                                passVisible ? 
-                                <BsEyeFill className='text-xl' onClick={() => {
-                                    setPassVisible(prev => !prev);
-                                    passRef.current.type = "password";
-                                }}/> :
-                                <BsEyeSlash className='text-xl' onClick={() => {
-                                    setPassVisible(prev => !prev);
-                                    passRef.current.type = "text";
-                                }}/>
-                            }
-                        </div>
-                        <input type="submit" value="Get Started" className='bg-indigo-500 text-white py-2 rounded-md text-xl w-full cursor-pointer'/>
-                    </form>
-                </div>
+        <form className='h-full w-full flex flex-col items-center justify-center space-y-4'>
+            <a className='bg-white p-2 text-black rounded-md flex items-center justify-center space-x-2 py-2 text-xl'>
+                <FcGoogle />
+            </a>
+            <div className='w-full h-10 flex items-center justify-around space-x-4'>
+                <div className='h-[1px] w-full bg-gray-500'></div>
+                <div className=''>Or</div>
+                <div className='h-[1px] w-full bg-gray-500'></div>
             </div>
-        </div>
+
+            <div className='w-full p-2 border-[1px] border-gray-500 rounded-md h-10 flex items-center'>
+                <input onChange={(e) => { setUsername(e.target.value) }} value={username} type="text" name="" id="" className='outline-none bg-transparent text-xs placeholder:text-xs h-full w-full' placeholder='Enter Username' />
+            </div>
+
+            <div className='w-full p-2 border-[1px] border-gray-500 rounded-md h-10 flex items-center relative'>
+                <input ref={passRef} onChange={(e) => { setPass(e.target.value) }} value={pass} type="password" name="" id="" className='outline-none bg-transparent text-xs  placeholder:text-xs h-full w-full' placeholder='Enter Password' />
+
+                {
+                    passVisible ?
+                        <BsEyeFill className='text-xl' onClick={() => {
+                            setPassVisible(prev => !prev);
+                            passRef.current.type = "password";
+                        }} /> :
+                        <BsEyeSlash className='text-xl' onClick={() => {
+                            setPassVisible(prev => !prev);
+                            passRef.current.type = "text";
+                        }} />
+                }
+            </div>
+
+            <input type="submit" value="Get Started" className='w-full bg-[rgb(211,250,80)] rounded-md text-sm cursor-pointer  text-black py-2 px-6 flex items-center justify-center tracking-wider' />
+        </form>
     )
 }
 

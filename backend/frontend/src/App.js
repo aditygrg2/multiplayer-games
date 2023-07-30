@@ -1,24 +1,26 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import WithoutUser from './Components/Games/Game1/GameBox'
-import ValidPath from './Components/Games/Game1/Game'
 import Home from '../src/Pages/Home'
 import TopBar from './Components/Navbar/TopBar'
 import NavBar from './Components/Navbar/NavBar'
-import Signup from './Pages/Signup'
-import Login from './Pages/Login'
+import Register from './Pages/Register'
 
 const App = () => {
+  const [user, setUser] = useState(false);
+  const location = useLocation();
+
+  const path = location.pathname;
+
   return (
-    <div className={`h-screen w-screen flex flex-col relative overflow-hidden bg-[#121212] text-white font-poppins`}>
-      <TopBar />
+    <div className={`h-screen w-screen flex flex-col relative overflow-hidden bg-[#121212] text-white`}>
+      { !(path == '/register') && <TopBar />}
       <div className='overflow-hidden flex flex-col lg:flex-row h-full w-full'>
-        <NavBar />
+      { !(path == '/register') && <NavBar />}
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/game1' element={<WithoutUser />} />
-          <Route path='/signup' element={<Signup/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/register' element={<Register/>} />
         </Routes>
       </div>
     </div>

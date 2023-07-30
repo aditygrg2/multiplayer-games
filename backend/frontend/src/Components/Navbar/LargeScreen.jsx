@@ -76,7 +76,7 @@ const LargeScreen = () => {
                             <li onClick={handleActive} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`flex flex-col items-center text-gray-600 justify-center ${ind === 0 ? 'active' : ""}`}>
                                 <button onClick={() => {
                                     {
-                                        list.list_name === "Home" &&  navigate('/') ||
+                                        list.list_name === "Home" &&  navigate('/home') ||
                                         list.list_name === "Play" && navigate('/gamelist') || 
                                         list.list_name === "Transactions" && navigate('/transaction')
                                     }
@@ -95,7 +95,7 @@ const LargeScreen = () => {
                     })
                 }
             </ul>
-            <button onClick={() => {navigate('/login')}} className='flex flex-col items-center justify-center space-y-1'>
+            <button onClick={() => {navigate('/register')}} className='flex flex-col items-center justify-center space-y-1'>
                 <PiSignIn className='text-xs text-gray-400'/>
                 <p className='text-xs'>Sign In</p>
             </button>
